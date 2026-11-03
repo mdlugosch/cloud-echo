@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-echo
+  labels:
+    app: cloud-echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-echo
+  template:
+    metadata:
+      labels:
+        app: cloud-echo
+    spec:
+      containers:
+        - name: app
+          image:
+ghcr.io/mdlugosch/cloud-echo:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-echo
+  labels:
+    app: cloud-echo
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: cloud-echo
