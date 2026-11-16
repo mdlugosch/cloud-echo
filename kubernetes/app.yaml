@@ -22,7 +22,7 @@ spec:
       containers: [
         {
           name: app,
-          image: ghcr.io/mdlugosch/cloud-echo:latest,
+          image: ghcr.io/mdlugosch/cloud-echo:1.0@sha256:30327d18862d60e7c62fc52f49397306f6ce7ac6c3e254dcb2b4fef5078cf9b6,
           ports: [
             {
               containerPort: 8080
